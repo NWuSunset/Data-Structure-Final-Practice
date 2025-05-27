@@ -65,3 +65,26 @@ void bst::display() {
   display_tree(root, 0);
   cout << "--------------------------------" << endl;
 }
+
+//previous node in inorder traversal (the next smaller number)
+node* bst::getPredecessor(node* pos, int target) {
+  if (pos == nullptr) {
+    return nullptr;
+  }
+
+  if (target < pos->data) { //if less than go left
+    getPredecessor(pos->left, target);
+  } else if (target > pos->data) { //if greater go right.
+    getPredecessor(pos->right, target);
+  } else { // once we hit the target (the predecessor is rightmost node of the left subtree
+    node* curr = pos;
+
+    if (curr->left != nullptr) { //if left subtre exits
+      curr = curr->left;
+      while (curr->right != nullptr) {
+        curr = curr->right;
+      }
+      return curr;
+    }
+  }
+}

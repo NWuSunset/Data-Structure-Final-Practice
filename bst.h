@@ -21,7 +21,7 @@ class bst
         void display(); 	//supplied
 
 /* ************** PLACE YOUR PROTOTYPE HERE ***************** */
- 
+		node* getPredecessor(node* pos, int target);
  
  	private:
  		node * root;
