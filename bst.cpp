@@ -81,10 +81,47 @@ node* bst::getPredecessor(node* pos, int target) {
 
     if (curr->left != nullptr) { //if left subtre exits
       curr = curr->left;
-      while (curr->right != nullptr) {
-        curr = curr->right;
-      }
-      return curr;
+      //while (curr->right != nullptr) {
+      //curr = curr->right;
+      
+      return getRight(curr);
+    //return curr;
     }
   }
+  }
+
+//gets rightmost of subtree
+node* bst::getRight(node* pos) {
+  if (pos->right == nullptr) {
+    return pos;
+  }
+
+  getRight(pos->right);
 }
+
+
+//go leftmost and delete parent and leaf
+void bst::removeSmallestTwo() {
+ 
+  removeMin(root, nullptr);
+  removeMin(root, nullptr);
+  
+}
+
+void bst::removeMin(node* pos, node* prev) {
+  if (pos == nullptr) {
+    return;
+  }
+
+  if (pos->left != nullptr) {
+    removeMin(pos->left, pos); //go left (once it returns it will become null)
+  } else { //once left is nul
+    node* right = pos->right;
+    delete pos;
+    prev->left = right; //prev is nulll
+  }
+}
+
+
+
+

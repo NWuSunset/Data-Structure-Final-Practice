@@ -21,11 +21,15 @@ class bst
         void display(); 	//supplied
 
 /* ************** PLACE YOUR PROTOTYPE HERE ***************** */
-		node* getPredecessor(node* pos, int target);
- 
- 	private:
+  node* getPredecessor(node* pos, int target);
+  node* getRight(node* pos);
+
+  void removeSmallestTwo();
+  void removeMin(node* pos, node* prev);
+ 	
  		node * root;
-		void display_tree(node*, int);
+private:
+  void display_tree(node*, int);
 };
   
 
